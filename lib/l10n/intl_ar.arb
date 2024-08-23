@@ -1,0 +1,26 @@
+{
+    "appTitle": "مرحبًا مجددًا!",
+  "rentalExperience": "استمتع بتجربة تأجير فريدة ومستمرة. اكتشف المزيد وابقَ على اطلاع دائم مع كراء",
+  "phoneNumber": "رقم الجوال",
+  "password": "كلمة المرور",
+  "forgotPassword": "فقدت كلمة المرور؟",
+  "login": "تسجيل دخول",
+  "loginWithGoogle": "تسجيل دخول عن طريق جوجل",
+  "loginWithApple": "تسجيل دخول عن طريق آبل",
+  "newUser": "مستخدم جديد؟",
+  "createAccount": "قم بإنشاء حساب",
+  "propertyType": "تجاري أم سكني",
+  "searchPrompt": "ابحث واختر ما يناسبك. كراء، حيث تلتقي التجربة بالتنوع",
+  "fullName": "الاسم بالكامل",
+  "email": "البريد الآلكتروني",
+  "dateOfBirth": "تاريخ الميلاد",
+  "idOrResidenceNumber": "رقم الهوية / الاقامة",
+  "confirmPassword": "تاكيد كلمة المرور",
+  "existingUser": "مستخدم بالفعل",
+  "loginPrompt": "تسجيل دخول؟",
+  "enter_mobile_number": "قم بادخال رقم الجوال",
+  "confirmation_code_message": "سيتم ارسال كود تاكيد علي رقم جوالك",
+  "send": "ارسال"
+
+  }
+  
