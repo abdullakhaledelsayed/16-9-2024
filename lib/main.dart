@@ -1,8 +1,8 @@
 import 'package:first/generated/l10n.dart';
-import 'package:first/register.dart';
+import 'package:first/screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'homepage.dart';
+import 'screens/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      locale: const Locale("en"), // This sets the app's locale to Arabic
+      locale: const Locale("ar"), // This sets the app's locale to Arabic
       localizationsDelegates: const [
         S.delegate, // Generated localization delegate
         GlobalMaterialLocalizations.delegate,

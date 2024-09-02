@@ -1,77 +1,103 @@
-import 'package:flutter/material.dart';
-import 'Apiservice.dart';
-import 'homepage.dart'; // Import your home page
-import 'forgetpassword.dart'; // Import your forget password page
-import 'register.dart'; // Import your registration page
+/*import 'apiservice.dart';
 
 class AuthService {
-  final ApiService apiService;
+  final ApiService _apiService = ApiService(baseUrl: 'https://yourapi.com'); // Replace with your API base URL
 
-  AuthService(this.apiService);
-
-  Future<void> loginOrRegisterUser({
-    required BuildContext context,
-    required TextEditingController phoneNumberController,
-    required TextEditingController passwordController,
-    required ValueSetter<bool> setLoadingState,
-  }) async {
-    if (phoneNumberController.text.isEmpty || passwordController.text.isEmpty) {
-      _showSnackBar(context, "Please fill in all fields");
-      return;
-    }
-
-    setLoadingState(true);
-
+  Future<Map<String, dynamic>> login(String phone, String password) async {
     try {
-      final responseData = await apiService.post(
-        'auth/login', // Replace with your actual endpoint
-        {
-          'phoneNumber': phoneNumberController.text,
-          'password': passwordController.text,
-        },
-      );
-
-      if (responseData["status"] == true) {
-        _showSnackBar(context, "Login successful!");
-        _navigateToHomePage(context);
-      } else {
-        _handleLoginError(context, responseData["message"]);
-      }
+      final response = await _apiService.(phone, password);
+      return response;
     } catch (e) {
-      _showSnackBar(context, "Error: $e");
-    } finally {
-      setLoadingState(false);
+      throw Exception('Login failed: $e');
     }
   }
 
-  void _showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message)),
-    );
-  }
-
-  void _navigateToHomePage(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const KeraHomePage()),
-    );
-  }
-
-  void _handleLoginError(BuildContext context, String? errorMessage) {
-    if (errorMessage == "this user is not verified") {
-      _showSnackBar(context, "Your account is not verified. Please check your email or phone for verification instructions.");
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const forgetpassword()),
-      );
-    } else if (errorMessage == "User not found") {
-      _showSnackBar(context, "User not found, please register first.");
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const Register()),
-      );
-    } else {
-      _showSnackBar(context, errorMessage ?? "Login failed");
+  Future<Map<String, dynamic>> register(Map<String, dynamic> data) async {
+    try {
+      final response = await _apiService.register(data);
+      return response;
+    } catch (e) {
+      throw Exception('Registration failed: $e');
     }
   }
 }
+*/
+/*
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+// Define a class to handle authentication requests
+class AuthService {
+  final String apiUrl = 'https://example.com/api'; // Replace with your actual API URL
+
+  // Function to register a new user
+  Future<Map<String, dynamic>> registerUser({
+    required String fullName,
+    required String email,
+    required String password,
+    required String phoneNumber,
+    required String userType,
+  }) async {
+    final Uri url = Uri.parse('$apiUrl/register'); // Update endpoint if necessary
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'fullName': fullName,
+          'email': email,
+          'password': password,
+          'phoneNumber': phoneNumber,
+          'userType': userType,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body); // Handle response as needed
+      } else {
+        throw Exception('Failed to register user: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      throw Exception('Error during registration: $e');
+    }
+  }
+
+  // Function to log in a user
+  Future<Map<String, dynamic>> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    final Uri url = Uri.parse('$apiUrl/login'); // Update endpoint if necessary
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'email': email,
+          'password': password,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body); // Handle response as needed
+      } else {
+        throw Exception('Failed to log in: ${response.reasonPhrase}');
+      }
+    } catch (e) {
+      throw Exception('Error during login: $e');
+    }
+  }
+}
+
+// Usage example:
+// final authService = AuthService();
+// final result = await authService.registerUser(
+//   fullName: 'John Doe',
+//   email: 'john@example.com',
+//   password: 'password123',
+//   phoneNumber: '1234567890',
+//   userType: 'customer',
+// );
+*/
